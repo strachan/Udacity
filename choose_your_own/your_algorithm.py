@@ -32,9 +32,16 @@ plt.show()
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
 
-
-
+estimators = 20
+learning = 0.7
+clf = AdaBoostClassifier(DecisionTreeClassifier(max_depth = 1), n_estimators = estimators, learning_rate = learning)
+clf.fit(features_train, labels_train)
+print 'n_estimators ' + str(estimators) 
+print 'learning_rate ' + str(learning)
+print str(clf.score(features_test, labels_test))
 
 
 
